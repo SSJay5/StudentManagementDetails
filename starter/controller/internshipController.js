@@ -10,6 +10,7 @@ exports.setUserIds = (req, res, next) => {
   next();
 };
 
+exports.getInternship = factory.getOne(Internship);
 exports.createInternship = factory.createOne(Internship);
 exports.deleteIntership = factory.deleteOne(Internship);
 exports.updateInternship = factory.updateOne(Internship);

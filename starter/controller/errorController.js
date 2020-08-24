@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-absolute-path
-const AppError = require('./../utils/appError');
+const AppError = require('../utils/appError');
 
 const handleDuplicateFieldsDB = (err) => {
   const value = err.keyValue.name;
