@@ -13,6 +13,7 @@ const cookieParser = require('cookie-parser');
 const AppError = require('./starter/utils/appError');
 const userRouter = require('./starter/routes/userRoutes');
 const internshipRouter = require('./starter/routes/internshipRoutes');
+const projectRouter = require('./starter/routes/projectRoutes');
 const globalErrorHandler = require('./starter/controller/errorController.js');
 
 app.use(helmet());
@@ -54,6 +55,7 @@ app.use(
 
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/internship', internshipRouter);
+app.use('/api/v1/project', projectRouter);
 app.use('*', (req, res, next) => {
   return next(
     new AppError(`Can't find ${req.originalUrl} on this server!!!`, 404)
