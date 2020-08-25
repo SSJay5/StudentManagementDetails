@@ -34,7 +34,7 @@ const userSchema = new mongoose.Schema(
       {
         semester: {
           type: Number,
-          unique: true,
+          
         },
         theoryAttendance: {
           type: Number,
@@ -83,6 +83,12 @@ userSchema.virtual('projects', {
   foreignField: 'user',
   localField: '_id',
 });
+
+userSchema.virtual('academics',{
+  ref: "Academics", //model name where the object will be found (from outside)
+  foreignField : 'user', // object name (found in present document)
+  localField : '_id' // id 
+})
 
 //DOCUMENT MIDDLEWARES
 userSchema.pre('save', async function (next) {

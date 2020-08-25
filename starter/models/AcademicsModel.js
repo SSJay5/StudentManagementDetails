@@ -29,8 +29,6 @@ const academicsSchema = new Schema({
         required : true
     },
 
-    cgpi : [pointerSchema],
-
     domainInterest : { 
         type :String,
         required : true
@@ -39,8 +37,17 @@ const academicsSchema = new Schema({
     programLang : { 
         type :String,
         required : true
+    },
+    user: {
+        type : mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
+},
+    {
+        toJSON : {virtuals : true }, toObject : { virtuals : true}
     }
-})
+);
 
 const pointerSchema = new Schema({
 
@@ -59,9 +66,24 @@ const pointerSchema = new Schema({
 
     photo : {
         type : String
+    },
+
+    acad : {
+        type : mongoose.Schema.Types.ObjectId,
+        ref : 'acad'
     }
 })
 
-var academics = mongoose.model("academics",academicsSchema);
 
-module.exports = academics;
+academicsSchema.virtual('pointers',{
+    ref : 'Pointer',
+    foreignField : 'acad',
+    localField : '_id'
+})
+
+
+var Academics = mongoose.model("academics",academicsSchema);
+
+var Pointer = mongoose.model("pointers",pointerSchema)
+
+module.exports = {Academics , Pointer};
