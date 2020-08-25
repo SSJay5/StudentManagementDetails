@@ -72,61 +72,9 @@ exports.createAttendance = catchAsync(async (req, res, next) => {
     },
   });
 });
-exports.updateAttendance = catchAsync(async (req, res, next) => {
-  let { semester, theoryAttendance, praticalAttendance } = req.body;
-  if (!semester) {
-    return next(new AppError('Please Enter semester ', 400));
-  }
-  if (semester >= req.user.attendance.length + 1) {
-    return next(
-      new AppError(`Please Create ${semester}'s data before updating`, 400)
-    );
-  }
-
-  if (!theoryAttendance) {
-    theoryAttendance = req.user.attendance[semester - 1].theoryAttendance;
-  }
-  if (!praticalAttendance) {
-    praticalAttendance = req.user.attendance[semester - 1].praticalAttendance;
-  }
-  req.user.attendance[semester - 1].theoryAttendance = theoryAttendance;
-  req.user.attendance[semester - 1].praticalAttendance = praticalAttendance;
-  const user = await User.findByIdAndUpdate(
-    req.user.id,
-    {
-      attendance: req.user.attendance,
-    },
-    {
-      new: true,
-      runValidators: true,
-    }
-  );
-  res.status(200).json({
-    status: 'success',
-    data: {
-      user,
-    },
-  });
-});
-exports.deleteAttendance = catchAsync(async (req, res, next) => {
-  if (req.user.attendance.length > 0) req.user.attendance.pop();
-  const updatedUser = await User.findByIdAndUpdate(
-    req.user.id,
-    {
-      attendance: req.user.attendance,
-    },
-    {
-      new: true,
-      runValidators: true,
-    }
-  );
-  res.status(200).json({
-    status: 'success',
-    data: {
-      user: updatedUser,
-    },
-  });
-});
+exports.updateAttendance = (req, res, next) => {
+  const { semester, theoryAttendance, praticalAttendance } = req.body;
+};
 //Admin controlls
 exports.getAllUsers = factory.getAll(User);
 exports.getUser = factory.getOne(User);
