@@ -19,9 +19,7 @@ router
 router
   .route('/attendance')
   .get(userController.getAllAttendance)
-  .post(userController.createAttendance)
-  .patch(userController.updateAttendance)
-  .delete(userController.deleteAttendance);
+  .post(userController.createAttendance);
 router
   .route('/:id')
   .get(userController.getUser)
