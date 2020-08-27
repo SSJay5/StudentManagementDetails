@@ -2,6 +2,7 @@ const crypto = require('crypto');
 const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcryptjs');
+const Academics = require('./academicsModel');
 
 const userSchema = new mongoose.Schema(
   {
@@ -22,6 +23,7 @@ const userSchema = new mongoose.Schema(
       required: [true, 'Please provide your ID card number'],
       unique: true,
     },
+    academics: { type: mongoose.Schema.ObjectId },
     photo: {
       type: String,
     },
@@ -34,7 +36,6 @@ const userSchema = new mongoose.Schema(
       {
         semester: {
           type: Number,
-          
         },
         theoryAttendance: {
           type: Number,
@@ -84,13 +85,14 @@ userSchema.virtual('projects', {
   localField: '_id',
 });
 
-userSchema.virtual('academics',{
-  ref: "Academics", //model name where the object will be found (from outside)
-  foreignField : 'user', // object name (found in present document)
-  localField : '_id' // id 
-})
-
 //DOCUMENT MIDDLEWARES
+// userSchema.pre('save', async function (next) {
+//   if (!this.academics) {
+//     return next();
+//   }
+//   this.academics = await Academics.findById(this.academics);
+//   next();
+// });
 userSchema.pre('save', async function (next) {
   if (!this.isModified('password')) {
     return next();
