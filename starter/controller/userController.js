@@ -4,6 +4,7 @@ const AppError = require('../utils/appError');
 const Internship = require('../models/internshipModel');
 const Project = require('../models/projectDetailModel');
 const catchAsync = require('../utils/catchAsync');
+const OnlineCertificate = require('../models/OnlineCertificateModel');
 
 //Student controlls
 //InternShip Section
@@ -14,6 +15,10 @@ exports.getAllInternships = factory.getAll(Internship, {
 exports.getAllProjects = factory.getAll(Project, {
   path: 'projects',
 });
+//Online Certification Section
+exports.getAllOnlineCertificates = factory.getAll(OnlineCertificate, {
+  path : 'onlineCertificates'
+})
 //Attendance Section
 exports.getAllAttendance = (req, res, next) => {
   res.status(200).json({
