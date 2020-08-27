@@ -18,6 +18,11 @@ const userSchema = new mongoose.Schema(
       lowercase: true,
       validate: [validator.isEmail, 'Plase enter a valid email'],
     },
+    rollNumber : {
+      type : String, //TE COMPS A 24
+      unique : true,
+      required : true
+    },
     collegeId: {
       type: String,
       required: [true, 'Please provide your ID card number'],
@@ -83,6 +88,16 @@ userSchema.virtual('projects', {
   ref: 'Project',
   foreignField: 'user',
   localField: '_id',
+});
+userSchema.virtual('onlineCertificates',{
+  ref : 'OnlineCertificate',
+  foreignField : 'user',
+  localField : '_id'
+});
+userSchema.virtual('academics',{
+  ref: "Academics", //model name where the object will be found (from outside)
+  foreignField : 'user', // object name (found in present document)
+  localField : '_id' // id 
 });
 
 //DOCUMENT MIDDLEWARES
