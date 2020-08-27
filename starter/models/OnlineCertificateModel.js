@@ -6,33 +6,41 @@ var onlineSchema =  new Schema({
 
     sem : {
         type : Number,
-        default : ""
+        required  : true 
     },
 
     platform : {
-        type : String
-
+        type : String,
+        required  : true 
     },
 
     domain : {
-        type : String
-
+        type : String,
+        required  : true 
     },
 
     from : {
-        type : Date
+        type : Date,
+        required  : true 
     },
 
     to : {
-        type : Date
+        type : Date,
+        required  : true 
     },
 
     certificate : {
-        type : String
-    } 
-
+        type : String,
+        required  : true 
+    },
+    
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true,
+      },
 })
 
-var onlineCertificate = mongoose.model("onlineSchema",onlineSchema);
+var OnlineCertificate = mongoose.model("OnlineCertificate",onlineSchema);
 
-module.exports = onlineCertificate;
+module.exports = OnlineCertificate;
