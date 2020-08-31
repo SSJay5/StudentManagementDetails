@@ -4,8 +4,6 @@ const factory = require('./handelFactory');
 const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
 const Pointer = require('../models/pointerModel');
-const { bool } = require('sharp');
-const { findById } = require('../models/userModel');
 
 exports.getAcademics = catchAsync(async (req, res, next) => {
   let myAcademics;
@@ -55,7 +53,6 @@ exports.createPointer = catchAsync(async (req, res, next) => {
       )
     );
   }
-  let ok = true;
   if (currAcademics.visitedSem[req.body.semester]) {
     return next(new AppError('Please Update/Fill existing data!!!', 400));
   }
