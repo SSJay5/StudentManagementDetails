@@ -15,7 +15,7 @@ const userRouter = require('./starter/routes/userRoutes');
 const internshipRouter = require('./starter/routes/internshipRoutes');
 const projectRouter = require('./starter/routes/projectRoutes');
 const academicsRouter = require('./starter/routes/academicsRoutes');
-const onlineCertificationRouter = require('./starter/routes/onlineCertificationRouter')
+const coCurricularRouter = require('./starter/routes/coCurricularRoutes');
 const globalErrorHandler = require('./starter/controller/errorController.js');
 
 app.use(helmet());
@@ -59,7 +59,7 @@ app.use('/api/v1/users', userRouter);
 app.use('/api/v1/internship', internshipRouter);
 app.use('/api/v1/project', projectRouter);
 app.use('/api/v1/academics', academicsRouter);
-app.use('/api/v1/onlineCertificate',onlineCertificationRouter);
+app.use('/api/v1/co-curricular', coCurricularRouter);
 app.use('*', (req, res, next) => {
   return next(
     new AppError(`Can't find ${req.originalUrl} on this server!!!`, 404)
