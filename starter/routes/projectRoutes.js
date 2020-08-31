@@ -11,13 +11,25 @@ router.use(projectController.setUserIds);
 
 router
   .route('/')
-  .get(userController.getAllProjects)
-  .post(projectController.createProject);
+  .get(
+    authController.restrictTo('student', 'admin'),
+    userController.getAllProjects
+  )
+  .post(authController.restrictTo('student'), projectController.createProject);
 
 router
   .route('/:id')
-  .get(projectController.getProject)
-  .patch(projectController.updateProject)
-  .delete(projectController.deleteProject);
+  .get(
+    authController.restrictTo('student', 'admin'),
+    projectController.getProject
+  )
+  .patch(
+    authController.restrictTo('student', 'admin'),
+    projectController.updateProject
+  )
+  .delete(
+    authController.restrictTo('student', 'admin'),
+    projectController.deleteProject
+  );
 
 module.exports = router;

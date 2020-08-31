@@ -1,16 +1,27 @@
 const express = require('express');
+
 const router = express.Router();
 const userController = require('../controller/userController');
 const authController = require('../controller/authController');
 const internshipController = require('../controller/internshipController');
-const { use } = require('../../app');
 
 //ALL
 router.route('/login').post(authController.login);
 router.route('/signUp').post(authController.signup);
-
+router.route('/forgotPassword').post(authController.forgotPassword);
+router.route('/resetPassword/:token').patch(authController.resetPassword);
 //LoggedIn
 router.use(authController.protect);
+
+router
+  .route('/me')
+  .get(userController.getMe)
+  .patch(
+    userController.uploadUserPhoto,
+    userController.resizeUserPhoto,
+    userController.updateMe
+  )
+  .delete(userController.deleteMe);
 //Admin
 router
   .route('/')

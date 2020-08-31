@@ -9,11 +9,23 @@ router.use(authController.protect);
 router.use(internshipController.setUserIds);
 router
   .route('/')
-  .get(userController.getAllInternships)
-  .post(internshipController.createInternship);
+  .get(
+    authController.restrictTo('student', 'admin'),
+    userController.getAllInternships
+  )
+  .post(
+    authController.restrictTo('student'),
+    internshipController.createInternship
+  );
 router
   .route('/:id')
-  .patch(internshipController.updateInternship)
-  .delete(internshipController.deleteIntership);
+  .patch(
+    authController.restrictTo('student', 'admin'),
+    internshipController.updateInternship
+  )
+  .delete(
+    authController.restrictTo('student', 'admin'),
+    internshipController.deleteIntership
+  );
 
 module.exports = router;
