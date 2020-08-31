@@ -18,10 +18,9 @@ const userSchema = new mongoose.Schema(
       lowercase: true,
       validate: [validator.isEmail, 'Plase enter a valid email'],
     },
-    rollNumber : {
-      type : String, //TE COMPS A 24
-      unique : true,
-      required : true
+    photo: {
+      type: String,
+      default: 'default.jpeg',
     },
     collegeId: {
       type: String,
@@ -89,25 +88,17 @@ userSchema.virtual('projects', {
   foreignField: 'user',
   localField: '_id',
 });
-userSchema.virtual('onlineCertificates',{
-  ref : 'OnlineCertificate',
-  foreignField : 'user',
-  localField : '_id'
+userSchema.virtual('studentBodies', {
+  ref: 'StudentBody',
+  foreignField: 'user',
+  localField: '_id',
 });
-// userSchema.virtual('academics',{
-//   ref: "Academics", //model name where the object will be found (from outside)
-//   foreignField : 'user', // object name (found in present document)
-//   localField : '_id' // id 
-// });
-
+userSchema.virtual('studentProjects', {
+  ref: 'StudentProject',
+  foreignField: 'user',
+  localField: '_id',
+});
 //DOCUMENT MIDDLEWARES
-// userSchema.pre('save', async function (next) {
-//   if (!this.academics) {
-//     return next();
-//   }
-//   this.academics = await Academics.findById(this.academics);
-//   next();
-// });
 userSchema.pre('save', async function (next) {
   if (!this.isModified('password')) {
     return next();
@@ -121,8 +112,9 @@ userSchema.pre('save', function (next) {
   if (!this.isModified('password') || this.isNew) {
     return next();
   }
-
   this.passwordChangedAt = Date.now() - 1000;
+
+  next();
 });
 
 //QUERY MIDDLEWARES
@@ -136,7 +128,18 @@ userSchema.methods.correctPassword = async function (
 ) {
   return await bcrypt.compare(candidatePassword, userPassword);
 };
+userSchema.methods.createPasswordResetToken = function () {
+  const resetToken = crypto.randomBytes(32).toString('hex');
 
+  this.passwordResetToken = crypto
+    .createHash('sha256')
+    .update(resetToken)
+    .digest('hex');
+  this.passwordResetExpires = Date.now() + 10 * 60 * 1000;
+  console.log({ resetToken }, this.passwordResetToken);
+
+  return resetToken;
+};
 userSchema.methods.changedPasswordAfter = function (JWTTimesStamp) {
   // eslint-disable-next-line radix
   const changedTimesStamp = parseInt(this.passwordChangedAt.getTime() / 1000);

@@ -27,7 +27,7 @@ const projectDetailSchema = new mongoose.Schema({
     required: [true, 'Please provide your role in your Project'],
   },
   mentor: {
-    trpe: String,
+    type: String,
   },
   funded: {
     type: Boolean,
@@ -35,11 +35,16 @@ const projectDetailSchema = new mongoose.Schema({
   },
   investor: {
     type: String,
+    default: null,
   },
   user: {
     type: mongoose.Schema.ObjectId,
     ref: 'User',
     required: [true, 'Project must belong to a student'],
+  },
+  skillsDeveloped: {
+    type: String,
+    required: [true, 'Please Fill Skills You Developed during your internship'],
   },
 });
 

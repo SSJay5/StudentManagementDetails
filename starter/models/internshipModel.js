@@ -15,8 +15,8 @@ const internshipSchema = new mongoose.Schema({
     required: [true, 'Please provide the Company name!!!'],
   },
   duration: {
-    type: Number,
-    required: [true, 'Please Provide duration of internship in months'],
+    type: String,
+    required: [true, 'Please Provide duration of your internship'],
   },
   domain: {
     type: String,
@@ -24,7 +24,6 @@ const internshipSchema = new mongoose.Schema({
   },
   stipend: {
     type: Number,
-    required: [true, 'Please Provide stipend of internship per months'],
   },
   user: {
     type: mongoose.Schema.ObjectId,
