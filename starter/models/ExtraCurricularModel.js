@@ -4,26 +4,28 @@ const Schema = mongoose.Schema;
 
 const extraCSchema = new Schema({
 
-    sem : {
+    semester : {
         type : Number,
-        default :''
+        required: [true, 'Please provide name of your Junior College'],
     },
 
     activity : {
-        type : String
+        type : String,
+        required: [true, 'Please provide name of your Junior College'],
+ 
     },
 
     levelActivity : {
-        enum : [], // abhi tak decided nai hai
-        type : String
-
+       // enum : ['National' ,], // abhi tak decided nai hai
+        type : String,
+        required: [true, 'Please provide name of your Junior College'],
+ 
     },
 
     position : {
         type : String,
-        default : ''
+        required: [true, 'Please provide name of your Junior College'],
     }
-
 })
 
 var extraCurricular = mongoose.model("extraCurricular",extraCSchema)
