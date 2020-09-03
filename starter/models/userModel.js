@@ -88,6 +88,13 @@ userSchema.virtual('projects', {
   foreignField: 'user',
   localField: '_id',
 });
+
+userSchema.virtual('extreCurriculars', {
+  ref : 'ExtraCurricular' ,
+  foreignField : 'user' ,
+  localField : '_id' 
+})
+
 userSchema.virtual('studentBodies', {
   ref: 'StudentBody',
   foreignField: 'user',
