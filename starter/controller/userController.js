@@ -48,6 +48,11 @@ exports.getAllInternships = factory.getAll(Internship, {
 exports.getAllProjects = factory.getAll(Project, {
   path: 'projects',
 });
+//Extra Curricular Section
+exports.getAllExtraCurriculars = factory.getAll(ExtraCurricular, { 
+  path : 'extracurriculars'
+})
+
 exports.getAllStudentBodies = factory.getAll(studentBody, {
   path: 'studentBodies',
 });
