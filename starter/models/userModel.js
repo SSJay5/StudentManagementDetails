@@ -105,6 +105,14 @@ userSchema.virtual('studentProjects', {
   foreignField: 'user',
   localField: '_id',
 });
+
+userSchema.virtual('studentPublications',{
+  ref : 'StudentPublication',
+  foreignField : 'user',
+  localField : '_id'
+})
+
+
 //DOCUMENT MIDDLEWARES
 userSchema.pre('save', async function (next) {
   if (!this.isModified('password')) {
