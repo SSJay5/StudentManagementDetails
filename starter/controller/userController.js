@@ -9,7 +9,7 @@ const ExtraCurricular = require('../models/ExtraCurricularModel')
 const catchAsync = require('../utils/catchAsync');
 const studentBody = require('../models/studentBodyModel');
 const studentProject = require('../models/studentProjectModel');
-
+const studentPublication = require('../models/studentPublicationModel')
 const multerStorage = multer.memoryStorage();
 
 const multerFilter = (req, file, cb) => {
@@ -59,6 +59,9 @@ exports.getAllStudentBodies = factory.getAll(studentBody, {
 });
 exports.getAllStudentProjects = factory.getAll(studentProject, {
   path: 'studentProjects',
+});
+exports.getAllStudentPublications = factory.getAll(studentPublication, {
+  path: 'studentPublications',
 });
 exports.getcoCurriculars = catchAsync(async (req, res, next) => {
   const user = await User.findById(req.user.id)
