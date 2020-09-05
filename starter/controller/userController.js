@@ -5,6 +5,7 @@ const factory = require('./handelFactory');
 const AppError = require('../utils/appError');
 const Internship = require('../models/internshipModel');
 const Project = require('../models/projectDetailModel');
+const ExtraCurricular = require('../models/ExtraCurricularModel')
 const catchAsync = require('../utils/catchAsync');
 const studentBody = require('../models/studentBodyModel');
 const studentProject = require('../models/studentProjectModel');
@@ -63,6 +64,7 @@ exports.getcoCurriculars = catchAsync(async (req, res, next) => {
   const user = await User.findById(req.user.id)
     .populate('studentBodies')
     .populate('studentProjects')
+    .populate('studentPublications')
     .select(
       '-role -name -__v -collegeId -email -academics -passwordChangedAt -attendance'
     );
