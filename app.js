@@ -60,7 +60,7 @@ app.use('/api/v1/users', userRouter);
 app.use('/api/v1/internship', internshipRouter);
 app.use('/api/v1/project', projectRouter);
 app.use('/api/v1/academics', academicsRouter);
-app.use('/api/v1/co-curricular', coCurricularRouter);
+app.use('/api/v1/coCurriculars', coCurricularRouter);
 app.use('/api/v1/extraCurriculars',extraCurricularsRouter)
 
 app.use('*', (req, res, next) => {
