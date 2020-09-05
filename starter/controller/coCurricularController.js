@@ -1,5 +1,6 @@
 const StudentBody = require('../models/studentBodyModel');
 const StudentProject = require('../models/studentProjectModel');
+const StudentPublication = require('../models/studentPublicationModel') 
 const factory = require('./handelFactory');
 const User = require('../models/userModel');
 const userController = require('../controller/userController');
@@ -18,3 +19,7 @@ exports.deleteStudentBody = factory.deleteOne(StudentBody);
 exports.createStudentProject = factory.createOne(StudentProject);
 exports.updateStudentProject = factory.updateOne(StudentProject);
 exports.deleteStudentProject = factory.deleteOne(StudentProject);
+
+exports.createStudentPublication = factory.createOne(StudentPublication)
+exports.deleteStudentPublication = factory.deleteOne(StudentPublication)
+exports.updateStudentPublication = factory.updateOne(StudentPublication)
