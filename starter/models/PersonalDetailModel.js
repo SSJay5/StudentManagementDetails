@@ -20,21 +20,29 @@ var detailsSchema =  new Schema({
         required :true   
     },
 
-    idNumber : {
+    dateOfBirth : {
+        type : Date,
+        required : true
+    },
+
+    collegeId : {
         type : String,
         required : true,
         unique : true  
-
     },
 
     contact : {
-        type : String,
-        required : true
+        type : Number,
+        required : true,
+        min : 10,
+        max : 10
     },
 
     contactParent : {
-        type : String,
-        required : true
+        type : Number,
+        required : true,
+        min : 10,
+        max : 10
     },
 
     address :{ 
@@ -50,8 +58,7 @@ var detailsSchema =  new Schema({
     profilePhoto : {
         type : String,
         required : true
-    }
-
+    },
     
 })
 
