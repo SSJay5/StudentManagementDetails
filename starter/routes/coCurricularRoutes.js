@@ -47,4 +47,21 @@ router
     authController.restrictTo('student', 'admin'),
     coCurricularController.deleteStudentProject
   );
+router
+  .route('/studentPublication')
+  .post(
+    authController.restrictTo('student'),
+    coCurricularController.createStudentPublication
+  );
+router
+  .route('/studentPublication/:id')
+  .patch(
+    authController.restrictTo('student', 'admin'),
+    coCurricularController.updateStudentPublication
+  )
+  .delete(
+    authController.restrictTo('student', 'admin'),
+    coCurricularController.deleteStudentPublication
+  );
+
 module.exports = router;
