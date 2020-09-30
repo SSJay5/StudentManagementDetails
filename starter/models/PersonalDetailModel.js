@@ -6,57 +6,52 @@ var detailsSchema =  new Schema({
 
     firstname : {
         type : String,
-        required  :  [true, "Please provide your first name"]
+        required  :  true
     },
 
     middlename: {
         type : String,
-        required : [true, "Please provide your middle name"]
+        required : true 
 
     },
 
     lastname : {
         type : String,
-        required : [true, "Please provide your last name"] 
+        required :true   
     },
 
-    dateOfBirth : {
-        type : Date,
-        required : [true, "Please provide your Date of Birth"]
-    },
-
-    collegeId : {
+    idNumber : {
         type : String,
-        required : [true, "Please provide your College ID"],
+        required : true,
         unique : true  
+
     },
 
     contact : {
-        type : Number,
-        required : [true, "Please provide your contact number"],
-        
+        type : String,
+        required : true
     },
 
     contactParent : {
-        type : Number,
-        required : [true, "Please provide your Parent's Contact Number"],
-       
+        type : String,
+        required : true
     },
 
     address :{ 
         type :String,
-        required : [true, "Please provide your Address"]
+        required : true
     },
     
     addressPermanent : {
         type : String,
-        required : [true, "Please provide your Permanent Address"]
+        required : true
     },
 
     profilePhoto : {
         type : String,
-        required : [true, "Please provide your Profile Photo"]
-    },
+        required : true
+    }
+
     
 })
 

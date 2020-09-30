@@ -27,8 +27,7 @@ const userSchema = new mongoose.Schema(
       required: [true, 'Please provide your ID card number'],
       unique: true,
     },
-    personalDetails : {type : mongoose.Schema.Types.ObjectId},
-    academics: { type: mongoose.Schema.Types.ObjectId },
+    academics: { type: mongoose.Schema.ObjectId },
     photo: {
       type: String,
     },
