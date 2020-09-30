@@ -8,8 +8,19 @@ const AppError = require('../utils/appError');
 
 const catchAsync = require('../utils/catchAsync');
 
-exports.getPersonalDetails = factory.getOne(PersonalDetails);
+exports.getPersonalDetails = catchAsync(async (req, res, next) => {
 
+    const data = await PersonalDetails.findById(req.user.personalDetails);
+    
+    if(!data){
+        return new AppError("Fill your personal details first!!",404)
+    }
+    
+    res.status(200).json({
+        status : 'success',
+        data : data
+    })
+});
 exports.createPersonalDetails = catchAsync(async (req, res,next) => {
     if(req.user.personalDetails){
         return next(new AppError("Please update your Existing File", 400))
