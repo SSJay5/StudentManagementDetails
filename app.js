@@ -12,7 +12,6 @@ const cookieParser = require('cookie-parser');
 
 const AppError = require('./starter/utils/appError');
 const userRouter = require('./starter/routes/userRoutes');
-const personalDetailsRouter = require('./starter/routes/personalDetailsRoutes')
 const internshipRouter = require('./starter/routes/internshipRoutes');
 const projectRouter = require('./starter/routes/projectRoutes');
 const academicsRouter = require('./starter/routes/academicsRoutes');
@@ -58,7 +57,6 @@ app.use(
 );
 
 app.use('/api/v1/users', userRouter);
-app.use('/api/v1/personalDetails', personalDetailsRouter);
 app.use('/api/v1/internship', internshipRouter);
 app.use('/api/v1/project', projectRouter);
 app.use('/api/v1/academics', academicsRouter);
