@@ -34,15 +34,13 @@ var detailsSchema =  new Schema({
     contact : {
         type : Number,
         required : [true, "Please provide your contact number"],
-        min : 10,
-        max : 10
+        
     },
 
     contactParent : {
         type : Number,
         required : [true, "Please provide your Parent's Contact Number"],
-        min : 10,
-        max : 10
+       
     },
 
     address :{ 
