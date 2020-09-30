@@ -6,7 +6,7 @@ const authcontroller = require('../controller/authController');
 
 const router = express.Router();
 
-router.use(authcontrooler.protect);
+router.use(authcontroller.protect);
 
 router
     .route('/')
