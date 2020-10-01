@@ -50,7 +50,7 @@ const studentPublicationSchema = new  Schema({
     },
 
     paperType : {
-        enum : ['Jounal','Conference'],
+        enum : ['Journal','Conference'],
         type : String,
         required : [true, "Please provide the Paper Type"]
     },
@@ -60,6 +60,10 @@ const studentPublicationSchema = new  Schema({
         type : String,
         required : [true, "Please provide the Paper Level"]
     },
+    user : {
+        type : mongoose.Schema.Types.ObjectId,
+        required : [true ,"No user id set" ]
+    }
 })
 
 const StudentPublication = new mongoose.model('StudentPublication',studentPublicationSchema);

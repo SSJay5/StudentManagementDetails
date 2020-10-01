@@ -27,7 +27,8 @@ const userSchema = new mongoose.Schema(
       required: [true, 'Please provide your ID card number'],
       unique: true,
     },
-    academics: { type: mongoose.Schema.ObjectId },
+    personalDetails : {type : mongoose.Schema.Types.ObjectId},
+    academics: { type: mongoose.Schema.Types.ObjectId },
     photo: {
       type: String,
     },
@@ -88,13 +89,16 @@ userSchema.virtual('projects', {
   foreignField: 'user',
   localField: '_id',
 });
-
-userSchema.virtual('extreCurriculars', {
+userSchema.virtual('onlineCertificates',{
+  ref : 'OnlineCertificate',
+  foreignField : 'user',
+  localField : '_id'
+});
+userSchema.virtual('extraCurriculars', {
   ref : 'ExtraCurricular' ,
   foreignField : 'user' ,
   localField : '_id' 
 })
-
 userSchema.virtual('studentBodies', {
   ref: 'StudentBody',
   foreignField: 'user',
@@ -105,13 +109,11 @@ userSchema.virtual('studentProjects', {
   foreignField: 'user',
   localField: '_id',
 });
-
 userSchema.virtual('studentPublications',{
   ref : 'StudentPublication',
   foreignField : 'user',
   localField : '_id'
-})
-
+});
 
 //DOCUMENT MIDDLEWARES
 userSchema.pre('save', async function (next) {
