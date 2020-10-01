@@ -6,6 +6,7 @@ const AppError = require('../utils/appError');
 const Internship = require('../models/internshipModel');
 const Project = require('../models/projectDetailModel');
 const ExtraCurricular = require('../models/ExtraCurricularModel')
+const OnlineCertification = require('../models/OnlineCertificateModel')
 const catchAsync = require('../utils/catchAsync');
 const studentBody = require('../models/studentBodyModel');
 const studentProject = require('../models/studentProjectModel');
@@ -52,6 +53,11 @@ exports.getAllProjects = factory.getAll(Project, {
 //Extra Curricular Section
 exports.getAllExtraCurriculars = factory.getAll(ExtraCurricular, { 
   path : 'extracurriculars'
+})
+
+//Online certifiation Section
+exports.getAllOnlineCertificates = factory.getAll(OnlineCertification, { 
+  path : 'onlineCertifications'
 })
 
 exports.getAllStudentBodies = factory.getAll(studentBody, {
