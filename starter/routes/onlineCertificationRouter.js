@@ -10,13 +10,23 @@ router.use(onlineCertificateController.setUserIds);
 
 router
     .route('/')
-    .get(userController.getAllOnlineCertificates)
-    .post(onlineCertificateController.createOnlineCertificate);
+    .get(
+        authController.restrictTo('student', 'admin'),    
+        userController.getAllOnlineCertificates)
+
+    .post(
+        authController.restrictTo('student'),
+        onlineCertificateController.createOnlineCertificate);
 
 router
     .route('/:id')
-    .patch(onlineCertificateController.updateOnlineCertificate)
-    .delete(onlineCertificateController.deleteOnlineCertificate)
+    .patch(
+        authController.restrictTo('student', 'admin'),
+        onlineCertificateController.updateOnlineCertificate)
+
+    .delete(
+        authController.restrictTo('student', 'admin'),
+        onlineCertificateController.deleteOnlineCertificate)
 
 
 module.exports = router

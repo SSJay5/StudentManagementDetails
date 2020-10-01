@@ -31,6 +31,8 @@ router
     coCurricularController.deleteStudentBody
   );
 
+
+
 router
   .route('/studentProject')
   .post(
@@ -47,6 +49,15 @@ router
     authController.restrictTo('student', 'admin'),
     coCurricularController.deleteStudentProject
   );
+
+
+
+  router
+  .route('/')
+  .get(
+    authController.restrictTo('student', 'admin'),
+    userController.getcoCurriculars
+  );
 router
   .route('/studentPublication')
   .post(
@@ -62,6 +73,5 @@ router
   .delete(
     authController.restrictTo('student', 'admin'),
     coCurricularController.deleteStudentPublication
-  );
-
+  );  
 module.exports = router;
