@@ -25,6 +25,10 @@ const extraCSchema = new Schema({
     position : {
         type : String,
         required: [true, 'Please provide name of your Junior College'],
+    },
+    certificateUrl : {
+        type : String,
+        required : [true , "Please provide your certificate url"]
     }
 })
 

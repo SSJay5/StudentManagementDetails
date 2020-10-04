@@ -6,32 +6,32 @@ var onlineSchema =  new Schema({
 
     sem : {
         type : Number,
-        required  : true 
+        required  : [true, "Please provide your semester"] 
     },
 
     platform : {
         type : String,
-        required  : true 
+        required  : [true ,"Please provide your platform"] 
     },
 
     domain : {
         type : String,
-        required  : true 
+        required  : [true ,"Please provide your domain"] 
     },
 
     from : {
         type : Date,
-        required  : true 
+        required  : [true ,"Please provide your start date"]
     },
 
     to : {
         type : Date,
-        required  : true 
+        required  : [true ,"Please provide your end date"]
     },
 
-    certificate : {
+    certificateUrl : {
         type : String,
-        required  : true 
+        required  : [true ,"Please provide your certificate url"] 
     },
     
     user: {

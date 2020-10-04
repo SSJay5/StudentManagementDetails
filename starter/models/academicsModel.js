@@ -24,11 +24,17 @@ const academicsSchema = new mongoose.Schema(
         true,
         'Please provide your Department(CMPN, IT, EXTC, ETRX, AIDS )',
       ],
-      enum: ['CMPN', 'IT', 'EXTC', 'ETRX', 'AIDS'],
+      enum: ['COMPUTER', 'IT', 'EXTC', 'ETRX', 'AIDS'],
+    },
+    currentSemester : {
+      type : Number,
+      required: [true, 'Please provide Current Semester !'],
+      enum : [1,2,3,4,5,6,7,8]
     },
     domainOfInterest: {
       type: String,
       required: [true, 'Please provide your Domain Of Interest '],
+      
     },
     programmingLanguages: {
       type: String,

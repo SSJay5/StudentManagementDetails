@@ -25,6 +25,10 @@ const internshipSchema = new mongoose.Schema({
   stipend: {
     type: Number,
   },
+  certificateUrl : {
+    type : String,
+    required  : [true ,"Please provide your certificate url"] 
+  },
   user: {
     type: mongoose.Schema.ObjectId,
     ref: 'User',

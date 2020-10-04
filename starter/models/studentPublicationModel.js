@@ -60,6 +60,10 @@ const studentPublicationSchema = new  Schema({
         type : String,
         required : [true, "Please provide the Paper Level"]
     },
+    certificateUrl : {
+        type : String,
+        required : true
+    },
     user : {
         type : mongoose.Schema.Types.ObjectId,
         required : [true ,"No user id set" ]

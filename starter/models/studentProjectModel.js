@@ -24,6 +24,10 @@ const studentProjectSchema = new mongoose.Schema({
   position: {
     type: String,
   },
+  certificateUrl : {
+    type : String,
+    required : true
+  }
 });
 
 const StudentProject = new mongoose.model(

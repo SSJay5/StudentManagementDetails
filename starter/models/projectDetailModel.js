@@ -46,6 +46,10 @@ const projectDetailSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Please Fill Skills You Developed during your internship'],
   },
+  certificateUrl : {
+    type : String,
+    required  : [true ,"Please provide your certificate url"] 
+  },
 });
 
 // eslint-disable-next-line new-cap
