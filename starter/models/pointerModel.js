@@ -10,7 +10,7 @@ const pointerSchema = new mongoose.Schema({
     type: Number,
     required: [true, 'Please fill your gpa details'],
   },
-  photo: {
+  certificateUrl: {
     type: String,
     required: [true, 'Please upload your marksheet'],
   },
