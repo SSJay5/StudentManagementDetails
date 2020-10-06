@@ -19,11 +19,7 @@ const studentPublicationSchema = new  Schema({
         required : [true, "Please provide the Author's name"]
     },
 
-    url : {
-        type : String,
-        required : [true, "Please provide the respective Url"]
-    },
-
+  
     dateOfIssue : {
         type : Date,
         required : [true, "Please provide the Date when it was issued"]
@@ -62,7 +58,7 @@ const studentPublicationSchema = new  Schema({
     },
     certificateUrl : {
         type : String,
-        required : true
+        required : [true , "Please provide the certificate url"]
     },
     user : {
         type : mongoose.Schema.Types.ObjectId,
