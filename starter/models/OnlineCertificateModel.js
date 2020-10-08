@@ -18,6 +18,11 @@ var onlineSchema =  new Schema({
         type : String,
         required  : [true ,"Please provide your domain"] 
     },
+    
+    title : {
+        type : String,
+        required : [true , "please provide the title of the certificate]
+    },
 
     from : {
         type : Date,
