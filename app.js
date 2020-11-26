@@ -9,6 +9,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
 const cookieParser = require('cookie-parser');
+const bearerToken = require('express-bearer-token');
 
 const AppError = require('./starter/utils/appError');
 const userRouter = require('./starter/routes/userRoutes');
@@ -26,6 +27,13 @@ app.use(helmet());
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
+
+app.use(bearerToken({
+  bodyKey: 'access_token',
+  queryKey: 'access_token',
+  headerKey: 'Bearer',
+  cookie: false, // by default is disabled
+}));
 
 //Limit request from same API
 const limiter = rateLimit({
