@@ -44,7 +44,7 @@ exports.signup = catchAsync(async (req, res, next) => {
     passwordChangedAt: Date.now(),
   });
   const url = `${req.protocol}://${req.get('host')}/me`;
-  console.log(url);
+ // console.log(url);
   await new Email(newUser, url).sendWelcome();
   createSendToken(newUser, 201, res);
 });
@@ -62,11 +62,11 @@ exports.login = catchAsync(async (req, res, next) => {
   if (!user || !(await user.correctPassword(password, user.password))) {
     return next(new AppError('Invalid EmailID or Password !!!', 401));
   }
-  console.log(
-    user,
-    user.correctPassword(password, user.password),
-    user.changedPasswordAfter
-  );
+  //console.log(
+  //   user,
+  //   user.correctPassword(password, user.password),
+  //   user.changedPasswordAfter
+  // );
   createSendToken(user, 200, res);
 });
 
@@ -148,7 +148,7 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
     user.passwordResetToken = undefined;
     user.passwordResetExpires = undefined;
     await user.save({ validateBeforeSave: false });
-    console.log(err);
+    //console.log(err);
     return next(
       new AppError('There was an error sending the email. Try again later', 500)
     );

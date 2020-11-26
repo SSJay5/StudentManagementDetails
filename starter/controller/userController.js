@@ -32,7 +32,7 @@ exports.resizeUserPhoto = catchAsync(async (req, res, next) => {
     return next();
   }
   req.file.filename = `user-${req.user.id}-${Date.now()}.jpeg`;
-  console.log(req.file.filename);
+  //console.log(req.file.filename);
   await sharp(req.file.buffer)
     .resize(500, 500)
     .toFormat('jpeg')
@@ -230,7 +230,7 @@ exports.getMe = (req, res, next) => {
   });
 };
 exports.deleteMe = catchAsync(async (req, res, next) => {
-  console.log(req.user);
+  //console.log(req.user);
   await User.findByIdAndUpdate(req.user.id, { active: false });
 
   res.status(204).json({

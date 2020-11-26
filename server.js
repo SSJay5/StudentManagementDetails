@@ -10,7 +10,7 @@ dotenv.config({ path: './config.env' });
 const app = require('./app.js');
 // eslint-disable-next-line no-unused-vars
 
-console.log(process.env.DATABASE);
+//console.log(process.env.DATABASE);
 
 const DB = process.env.DATABASE.replace(
   '<password>',
@@ -26,7 +26,7 @@ mongoose
     useFindAndModify: false,
   })
   .then(() => {
-    console.log('DB connection established');
+   // console.log('DB connection established');
   });
 const port = 3000;
 // eslint-disable-next-line import/no-absolute-path
