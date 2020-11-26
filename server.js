@@ -26,7 +26,7 @@ mongoose
     useFindAndModify: false,
   })
   .then(() => {
-   // console.log('DB connection established');
+   console.log('DB connection established');
   });
 const port = 3000;
 // eslint-disable-next-line import/no-absolute-path
