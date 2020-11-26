@@ -21,7 +21,7 @@ var onlineSchema =  new Schema({
     
     title : {
         type : String,
-        required : [true , "please provide the title of the certificate]
+        required : [true , "please provide the title of the certificate"]
     },
 
     from : {
