@@ -2,70 +2,70 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const studentPublicationSchema = new  Schema({
+const studentPublicationSchema = new Schema({
 
-    title : {
-        type : String,
-        required : [true, "Please provide the title"]
-    },
-
-    year : {
-        type : String,
-        required : [true, "Please provide the year"]
+    title: {
+        type: String,
+        required: [true, "Please provide the title"]
     },
 
-    author : {
-        type : String,
-        required : [true, "Please provide the Author's name"]
+    studentPublicationYear: {
+        type: String,
+        required: [true, "Please provide the year"]
     },
 
-  
-    dateOfIssue : {
-        type : Date,
-        required : [true, "Please provide the Date when it was issued"]
+    author: {
+        type: String,
+        required: [true, "Please provide the Author's name"]
     },
 
-    volume : {
-        type : String,
-        required : [true, "Please specify the volume"]
+
+    dateOfIssue: {
+        type: Date,
+        required: [true, "Please provide the Date when it was issued"]
     },
 
-    pageNumber : {
-        type : String,
-        required : [true, "Please provide the Page Number"]
+    volume: {
+        type: String,
+        required: [true, "Please specify the volume"]
     },
 
-    publisher : {
-        type : String,
-        required : [true, "Please provide the Publisher's Name"]
+    pageNumber: {
+        type: String,
+        required: [true, "Please provide the Page Number"]
     },
 
-    ISBN : {
-        type : Number,
-        required : [true, "Please provide the ISBN"]
+    publisher: {
+        type: String,
+        required: [true, "Please provide the Publisher's Name"]
     },
 
-    paperType : {
-        enum : ['Journal','Conference'],
-        type : String,
-        required : [true, "Please provide the Paper Type"]
+    ISBN: {
+        type: Number,
+        required: [true, "Please provide the ISBN"]
     },
 
-    paperLevel : {
-        enum : ['National','International'],
-        type : String,
-        required : [true, "Please provide the Paper Level"]
+    paperType: {
+        enum: ['Journal', 'Conference'],
+        type: String,
+        required: [true, "Please provide the Paper Type"]
     },
-    certificateUrl : {
-        type : String,
-        required : [true , "Please provide the certificate url"]
+
+    paperLevel: {
+        enum: ['National', 'International'],
+        type: String,
+        required: [true, "Please provide the Paper Level"]
     },
-    user : {
-        type : mongoose.Schema.Types.ObjectId,
-        required : [true ,"No user id set" ]
+    studentPublicationCertificateUrl: {
+        type: String,
+        required: [true, "Please provide the certificate url"]
+    },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: [true, "No user id set"]
     }
 })
 
-const StudentPublication = new mongoose.model('StudentPublication',studentPublicationSchema);
+const StudentPublication = new mongoose.model('StudentPublication', studentPublicationSchema);
 
-module.exports  = StudentPublication;
+module.exports = StudentPublication;
